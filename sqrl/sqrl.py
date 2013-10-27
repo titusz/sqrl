@@ -22,7 +22,7 @@ from client import Client
 from docopt import docopt
 
 VERSION = "0.0.2"
-HOME = os.environ['HOME']
+HOME = os.getenv('HOME') or os.getenv('USERPROFILE')
 CONFIG_DIR = '.config/sqrl/'
 WORKING_DIR = HOME + '/' + CONFIG_DIR
 
