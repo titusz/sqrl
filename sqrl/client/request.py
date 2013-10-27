@@ -28,8 +28,10 @@ class SQRLRequest():
             self.http = httplib.HTTPConnection(self.url.netloc, timeout=9)
 
     def _path(self):
-        res = [self.url.path, "?", self.url.query,
-               "&", self.params.get()]
+        res = [self.url.path]
+        if not "?" in self.url.path:
+            res.append("?")
+        res.extend([self.url.query, "&", self.params.get()])
         return "".join(res)
 
     def get_url(self):
